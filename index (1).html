@@ -26,7 +26,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-bottom:80px}
-
+ 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:60px;background:rgba(30,30,30,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
@@ -42,7 +42,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .live-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 1.4s infinite;flex-shrink:0}
 .nav-btn{background:var(--teal);color:var(--white);border:none;border-radius:9px;padding:8px 18px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s}
 .nav-btn:hover{background:var(--teal-lt);transform:translateY(-1px)}
-
+ 
 /* HERO */
 .hero{padding:80px 32px 0;max-width:1200px;margin:0 auto}
 .hero-top{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;padding-bottom:40px}
@@ -68,7 +68,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .t-item b{color:var(--white)}
 .t-win b{color:var(--green)}
 .t-loss b{color:var(--red-side)}
-
+ 
 /* FEED */
 .feed-wrap{max-width:1200px;margin:0 auto;padding:0 32px 80px}
 .feed-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-top:28px}
@@ -77,7 +77,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .filter-chip{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;transition:all 0.2s}
 .filter-chip.on{background:var(--teal-dim);border-color:rgba(60,110,113,0.4);color:var(--teal-lt)}
 .filter-chip:hover{color:var(--white)}
-
+ 
 /* FEATURED */
 .featured{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:12px;position:relative;overflow:hidden;cursor:pointer;transition:all 0.2s}
 .featured::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),var(--teal-lt))}
@@ -119,7 +119,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .meta-item span{color:var(--white);font-weight:500}
 .feat-share{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;transition:all 0.2s}
 .feat-share:hover{color:var(--white)}
-
+ 
 /* GRID */
 .beef-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .beef-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px;cursor:pointer;transition:all 0.22s}
@@ -144,7 +144,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .bc-btn.a:hover{background:rgba(224,90,90,0.28)}
 .bc-btn.b{background:rgba(91,155,213,0.15);color:var(--blue-side)}
 .bc-btn.b:hover{background:rgba(91,155,213,0.28)}
-
+ 
 /* BET PANEL */
 .bet-panel{position:fixed;top:0;right:0;bottom:0;width:360px;background:var(--bg2);border-left:1px solid var(--border);z-index:500;padding:28px 24px;overflow-y:auto;transform:translateX(100%);transition:transform 0.3s cubic-bezier(.4,0,.2,1)}
 .bet-panel.open{transform:translateX(0)}
@@ -186,7 +186,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .sp-btn{width:100%;background:var(--teal);color:var(--white);border:none;border-radius:8px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s}
 .sp-btn:hover{background:var(--teal-lt)}
 .panel-note{font-size:11px;color:var(--muted);text-align:center}
-
+ 
 /* LEADERBOARD */
 .lb-section{max-width:1200px;margin:0 auto;padding:0 32px 80px}
 .section-label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
@@ -203,7 +203,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .lb-handle{font-size:11px;color:var(--muted)}
 .lb-val{font-size:14px;font-weight:600}
 .lb-val.earn{color:var(--green)}
-
+ 
 /* HOW IT WORKS */
 .how-section{max-width:1200px;margin:0 auto;padding:60px 32px 0}
 .section-header-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
@@ -222,7 +222,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .rd-pct{font-size:32px;font-weight:800;margin-bottom:4px;font-family:'Plus Jakarta Sans',sans-serif}
 .rd-label{font-size:13px;font-weight:600;margin-bottom:6px}
 .rd-sub{font-size:12px;color:var(--muted);line-height:1.5}
-
+ 
 /* TRUST */
 .trust-section{max-width:1200px;margin:0 auto;padding:48px 32px 0}
 .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
@@ -232,7 +232,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .trust-title{font-size:14px;font-weight:700;margin-bottom:8px}
 .trust-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px}
 .trust-tag{display:inline-block;background:rgba(52,199,123,0.1);border:1px solid rgba(52,199,123,0.2);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;color:var(--green)}
-
+ 
 /* FAQ */
 .faq-section{max-width:1200px;margin:0 auto;padding:48px 32px 0}
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -240,33 +240,33 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .faq-item:hover{border-color:rgba(60,110,113,0.35)}
 .faq-q{font-size:14px;font-weight:600;margin-bottom:10px;line-height:1.4}
 .faq-a{font-size:13px;color:var(--muted);line-height:1.65}
-
+ 
 /* RESPONSIVE ADDITIONS */
 @media(max-width:900px){.steps-grid{grid-template-columns:1fr 1fr}.trust-grid{grid-template-columns:1fr 1fr}.faq-grid{grid-template-columns:1fr}.rd-grid{grid-template-columns:1fr}.how-section,.trust-section,.faq-section{padding-left:16px;padding-right:16px}}
 @media(max-width:600px){.steps-grid{grid-template-columns:1fr}.trust-grid{grid-template-columns:1fr}}
-
+ 
 /* OVERLAY + TOAST */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:400;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(2px)}
 .overlay.on{opacity:1;pointer-events:all}
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg3);border:1px solid rgba(60,110,113,0.4);border-radius:10px;padding:12px 20px;font-size:13px;font-weight:500;color:var(--white);z-index:9000;opacity:0;transition:all 0.3s;display:flex;align-items:center;gap:8px;white-space:nowrap}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-
+ 
 /* ANIMATIONS */
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .hero-left{animation:fadeUp .5s .1s both}
 .hero-right-col{animation:fadeUp .5s .25s both}
-
+ 
 /* RESPONSIVE */
 @media(max-width:1024px){.beef-grid{grid-template-columns:repeat(2,1fr)}.hero-top{grid-template-columns:1fr}.hero-right-col{display:none}}
 @media(max-width:700px){nav{padding:0 16px}.nav-tabs{display:none}.hero{padding:76px 16px 0}.hero-h1{font-size:36px}.feed-wrap,.lb-section{padding:0 16px 60px}.beef-grid{grid-template-columns:1fr}.arena{grid-template-columns:1fr}.vs-block{display:none}.bet-panel{width:100%;left:0;right:0;border-radius:20px 20px 0 0;border-left:none;border-top:1px solid var(--border);top:auto}.lb-head{grid-template-columns:40px 1fr 80px}.lb-row{grid-template-columns:40px 1fr 80px}.lb-val:nth-child(4),.lb-val:nth-child(3){display:none}.lb-head div:nth-child(4),.lb-head div:nth-child(3){display:none}}
 </style>
 </head>
 <body>
-
+ 
 <div class="overlay" id="overlay" onclick="closePanel()"></div>
-
+ 
 <!-- NAV -->
 <nav>
   <a class="logo" href="#">
@@ -286,7 +286,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     <button class="nav-btn" onclick="openSignup()">Join Beta →</button>
   </div>
 </nav>
-
+ 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-top">
@@ -322,7 +322,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     </div>
   </div>
 </div>
-
+ 
 <!-- FEED -->
 <div class="feed-wrap" id="feed">
   <div class="feed-header">
@@ -336,7 +336,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       <div class="filter-chip" onclick="filterTab(this)">💼 Work</div>
     </div>
   </div>
-
+ 
   <!-- FEATURED -->
   <div class="featured" onclick="openBet('AI will make 50% of software engineers unemployed by 2027','@drip_king','@facts_only',68,32,'$4,820')">
     <div class="feat-top">
@@ -377,10 +377,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
       <div class="feat-share" onclick="event.stopPropagation();showToast('🔗 Link copied!')">Share ↗</div>
     </div>
   </div>
-
+ 
   <!-- GRID -->
   <div class="beef-grid">
-
+ 
     <div class="beef-card" onclick="openBet('LeBron is the GOAT, not Jordan','@xomocha','@sports_IQ',41,59,'$880')">
       <div class="bc-top"><span class="bc-cat">🏀 Sports</span><span class="bc-pot">$880</span></div>
       <div class="bc-q">"LeBron is the GOAT. Jordan fanboys are stuck in the 90s."</div>
@@ -395,7 +395,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         <button class="bc-btn b" onclick="event.stopPropagation();openBet('LeBron is the GOAT, not Jordan','@xomocha','@sports_IQ',41,59,'$880','b')">Bet Jordan</button>
       </div>
     </div>
-
+ 
     <div class="beef-card" onclick="openBet('Bitcoin hits $200K before Dec 2026','@cryptobro','@hodlgang',73,27,'$4,500')">
       <div class="bc-top"><span class="bc-cat">💰 Crypto</span><span class="bc-pot">$4,500</span></div>
       <div class="bc-q">"Bitcoin hits $200,000 before December 2026. Easy money."</div>
@@ -410,7 +410,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         <button class="bc-btn b" onclick="event.stopPropagation();openBet('Bitcoin hits $200K before Dec 2026','@cryptobro','@hodlgang',73,27,'$4,500','b')">Bet NO</button>
       </div>
     </div>
-
+ 
     <div class="beef-card" onclick="openBet('Kendrick destroyed Drake in their beef','@dotwave','@drakestan',82,18,'$320')">
       <div class="bc-top"><span class="bc-cat">🎵 Music</span><span class="bc-pot">$320</span></div>
       <div class="bc-q">"Kendrick destroyed Drake and it's not even close. Not like us."</div>
@@ -425,7 +425,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         <button class="bc-btn b" onclick="event.stopPropagation();openBet('Kendrick destroyed Drake in their beef','@dotwave','@drakestan',82,18,'$320','b')">Bet Drake</button>
       </div>
     </div>
-
+ 
     <div class="beef-card" onclick="openBet('Remote workers are more productive than office workers','@techbabe','@boomervibes',55,45,'$660')">
       <div class="bc-top"><span class="bc-cat">💼 Work</span><span class="bc-pot">$660</span></div>
       <div class="bc-q">"Remote workers are objectively more productive. Office culture is dead."</div>
@@ -440,7 +440,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         <button class="bc-btn b" onclick="event.stopPropagation();openBet('Remote workers are more productive than office workers','@techbabe','@boomervibes',55,45,'$660','b')">Bet Office</button>
       </div>
     </div>
-
+ 
     <div class="beef-card" onclick="openBet('Pineapple belongs on pizza','@sarahvibe','@bigbrainz',61,39,'$95')">
       <div class="bc-top"><span class="bc-cat">🍕 Food</span><span class="bc-pot">$95</span></div>
       <div class="bc-q">"Pineapple on pizza is elite tier and the haters are simply wrong."</div>
@@ -455,7 +455,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         <button class="bc-btn b" onclick="event.stopPropagation();openBet('Pineapple belongs on pizza','@sarahvibe','@bigbrainz',61,39,'$95','b')">Bet NO 🚫</button>
       </div>
     </div>
-
+ 
     <div class="beef-card" onclick="openBet('Taylor Swift is the greatest artist of the 21st century','@swiftie4ever','@musiccritic',47,53,'$210')">
       <div class="bc-top"><span class="bc-cat">🎵 Music</span><span class="bc-pot">$210</span></div>
       <div class="bc-q">"Taylor Swift is the greatest artist of the 21st century, no debate."</div>
@@ -470,10 +470,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
         <button class="bc-btn b" onclick="event.stopPropagation();openBet('Taylor Swift is the greatest artist of the 21st century','@swiftie4ever','@musiccritic',47,53,'$210','b')">Bet NO</button>
       </div>
     </div>
-
+ 
   </div>
 </div>
-
+ 
 <!-- HOW IT WORKS -->
 <div class="how-section">
   <div class="section-header-row">
@@ -527,7 +527,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     </div>
   </div>
 </div>
-
+ 
 <!-- TRUST & SAFETY -->
 <div class="trust-section">
   <div class="section-label">Trust & Safety</div>
@@ -558,7 +558,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     </div>
   </div>
 </div>
-
+ 
 <!-- FAQ -->
 <div class="faq-section">
   <div class="section-label">Common questions</div>
@@ -581,7 +581,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     </div>
   </div>
 </div>
-
+ 
 <!-- LEADERBOARD -->
 <div class="lb-section">
   <div class="section-label">Top Beefers This Week</div>
@@ -594,7 +594,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
     <div class="lb-row"><div class="lb-rank">5</div><div class="lb-user"><div class="lb-avatar">S</div><div><div class="lb-name">sarahvibe</div><div class="lb-handle">@sarahvibe</div></div></div><div class="lb-val">68%</div><div class="lb-val">22</div><div class="lb-val earn">+$1,450</div></div>
   </div>
 </div>
-
+ 
 <!-- BET PANEL -->
 <div class="bet-panel" id="betPanel">
   <button class="panel-close" onclick="closePanel()">✕</button>
@@ -637,20 +637,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   </div>
   <div class="panel-note">18+ only · Skill-based · Instant withdrawals</div>
 </div>
-
+ 
 <div class="toast" id="toast">✓ <span id="tmsg">Done</span></div>
-
+ 
 <script>
 let side='a', curA=68;
-
+ 
 // Counters
 function counter(el,to,prefix,suffix,dur){let s=0,step=to/(dur/16);const t=setInterval(()=>{s=Math.min(s+step,to);el.textContent=prefix+Math.floor(s)+suffix;if(s>=to)clearInterval(t)},16)}
 window.addEventListener('load',()=>{setTimeout(()=>{counter(document.getElementById('c1'),847,'$','K',1800);counter(document.getElementById('c2'),47,'','',1500);counter(document.getElementById('c3'),320,'','+%',2000)},400)});
-
+ 
 // Tabs
 function setTab(el){document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));el.classList.add('active')}
 function filterTab(el){document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('on'));el.classList.add('on')}
-
+ 
 // Live fluctuation
 setInterval(()=>{
   const d=(Math.random()-.5)*2.5;
@@ -678,7 +678,7 @@ setInterval(()=>{
     }
   });
 },2800);
-
+ 
 // Panel
 function openBet(q,na,nb,pa,pb,pot,s){
   document.getElementById('pq').textContent='"'+q+'"';
@@ -707,9 +707,9 @@ function updPayout(){
   document.getElementById('pp-odds').textContent=odds.toFixed(2)+'×';
   document.getElementById('pp-win').textContent='+$'+win.toFixed(2);
 }
-
+ 
 function openSignup(){openBet('Join BEEF.gg and start winning','You','Them',60,40,'$∞')}
-
+ 
 function submitJoin(){
   const e=document.getElementById('sp-email').value;
   if(!e||!e.includes('@')){document.getElementById('sp-email').style.borderColor='rgba(224,90,90,0.6)';return}
@@ -717,13 +717,13 @@ function submitJoin(){
   showToast('🔥 You\'re on the list!');
   setTimeout(closePanel,2000);
 }
-
+ 
 function showToast(msg){document.getElementById('tmsg').textContent=msg;const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
-
+ 
 // Scroll reveal
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}}),{threshold:0.08});
 document.querySelectorAll('.beef-card,.lb-row,.step-card,.trust-card,.faq-item,.rd-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(14px)';el.style.transition='opacity 0.4s ease,transform 0.4s ease';obs.observe(el)});
-
+ 
 updPayout();
 </script>
 </body>
