@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEEF.gg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #1E1E1E;
+  --bg2:      #2A2A2A;
+  --bg3:      #353535;
+  --teal:     #3C6E71;
+  --teal-lt:  #4a8a8e;
+  --teal-dim: rgba(60,110,113,0.15);
+  --teal-glow:rgba(60,110,113,0.35);
+  --white:    #FFFFFF;
+  --muted:    #888888;
+  --border:   rgba(255,255,255,0.07);
+  --green:    #34C77B;
+  --gold:     #F5C842;
+  --red-side: #E05A5A;
+  --blue-side:#5B9BD5;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-bottom:80px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:60px;background:rgba(30,30,30,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--teal-lt) 0%,var(--teal) 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1px rgba(60,110,113,0.4),0 4px 12px rgba(60,110,113,0.3)}
+.logo-mark svg{width:18px;height:18px}
+.logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:17px;letter-spacing:-0.3px;color:var(--white)}
+.logo-text span{color:var(--teal-lt)}
+.nav-tabs{display:flex;gap:2px;background:var(--bg3);border-radius:10px;padding:4px}
+.nav-tab{padding:6px 16px;border-radius:7px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:all 0.2s;border:none;background:none}
+.nav-tab.active,.nav-tab:hover{background:var(--bg2);color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-pill{display:flex;align-items:center;gap:6px;background:var(--teal-dim);border:1px solid rgba(60,110,113,0.3);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:500;color:var(--teal-lt)}
+.live-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 1.4s infinite;flex-shrink:0}
+.nav-btn{background:var(--teal);color:var(--white);border:none;border-radius:9px;padding:8px 18px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s}
+.nav-btn:hover{background:var(--teal-lt);transform:translateY(-1px)}
+
+/* HERO */
+.hero{padding:80px 32px 0;max-width:1200px;margin:0 auto}
+.hero-top{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;padding-bottom:40px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--teal-dim);border:1px solid rgba(60,110,113,0.3);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:500;color:var(--teal-lt);margin-bottom:20px}
+.hero-h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:52px;font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:18px}
+.hero-h1 .t{color:var(--teal-lt)}
+.hero-sub{font-size:16px;color:var(--muted);line-height:1.65;margin-bottom:32px;max-width:420px}
+.hero-actions{display:flex;gap:12px;align-items:center}
+.btn-main{background:var(--teal);color:var(--white);border:none;border-radius:10px;padding:12px 24px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s}
+.btn-main:hover{background:var(--teal-lt);transform:translateY(-1px);box-shadow:0 8px 24px var(--teal-glow)}
+.btn-ghost{background:var(--bg3);color:var(--white);border:none;border-radius:10px;padding:12px 20px;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.2s}
+.btn-ghost:hover{background:var(--bg2)}
+.hero-right-col{display:flex;flex-direction:column;gap:10px}
+.hero-stats{display:flex;gap:2px;background:var(--bg3);border-radius:14px;padding:4px}
+.h-stat{flex:1;text-align:center;padding:14px 10px;border-radius:10px;background:var(--bg2)}
+.h-stat-val{font-size:20px;font-weight:700;letter-spacing:-0.5px;margin-bottom:3px}
+.h-stat-key{font-size:11px;color:var(--muted);font-weight:500}
+.h-stat-val.teal{color:var(--teal-lt)}
+.h-stat-val.green{color:var(--green)}
+.hero-ticker{background:var(--bg3);border-radius:10px;padding:10px 16px;overflow:hidden}
+.ticker-inner{display:flex;gap:40px;animation:slide 22s linear infinite;white-space:nowrap}
+.t-item{font-size:12px;color:var(--muted);flex-shrink:0}
+.t-item b{color:var(--white)}
+.t-win b{color:var(--green)}
+.t-loss b{color:var(--red-side)}
+
+/* FEED */
+.feed-wrap{max-width:1200px;margin:0 auto;padding:0 32px 80px}
+.feed-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-top:28px}
+.feed-title{font-size:15px;font-weight:600}
+.feed-filters{display:flex;gap:6px;flex-wrap:wrap}
+.filter-chip{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;transition:all 0.2s}
+.filter-chip.on{background:var(--teal-dim);border-color:rgba(60,110,113,0.4);color:var(--teal-lt)}
+.filter-chip:hover{color:var(--white)}
+
+/* FEATURED */
+.featured{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:12px;position:relative;overflow:hidden;cursor:pointer;transition:all 0.2s}
+.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),var(--teal-lt))}
+.featured:hover{border-color:rgba(60,110,113,0.4);transform:translateY(-1px)}
+.feat-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.feat-cat{font-size:12px;font-weight:500;color:var(--muted)}
+.feat-badges{display:flex;gap:8px;align-items:center}
+.badge-live{display:flex;align-items:center;gap:5px;background:rgba(52,199,123,0.12);border:1px solid rgba(52,199,123,0.25);border-radius:20px;padding:4px 10px;font-size:11px;font-weight:600;color:var(--green)}
+.badge-hot{background:rgba(224,90,90,0.12);border:1px solid rgba(224,90,90,0.25);border-radius:20px;padding:4px 10px;font-size:11px;font-weight:600;color:var(--red-side)}
+.feat-q{font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;font-weight:700;line-height:1.3;margin-bottom:24px;letter-spacing:-0.3px}
+.arena{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin-bottom:18px}
+.debater{background:var(--bg3);border-radius:12px;padding:16px 18px;border:1px solid var(--border);cursor:pointer;transition:all 0.2s}
+.debater:hover{border-color:rgba(60,110,113,0.4)}
+.debater.side-a{border-left:3px solid var(--red-side)}
+.debater.side-b{border-left:3px solid var(--blue-side)}
+.deb-name{font-size:13px;font-weight:600;margin-bottom:3px}
+.deb-handle{font-size:11px;color:var(--muted);margin-bottom:10px}
+.deb-pct{font-size:30px;font-weight:700;letter-spacing:-1px;margin-bottom:4px}
+.side-a .deb-pct{color:var(--red-side)}
+.side-b .deb-pct{color:var(--blue-side)}
+.deb-amount{font-size:12px;color:var(--muted)}
+.deb-bet-btn{margin-top:12px;width:100%;border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s}
+.side-a .deb-bet-btn{background:rgba(224,90,90,0.15);color:var(--red-side)}
+.side-a .deb-bet-btn:hover{background:rgba(224,90,90,0.28)}
+.side-b .deb-bet-btn{background:rgba(91,155,213,0.15);color:var(--blue-side)}
+.side-b .deb-bet-btn:hover{background:rgba(91,155,213,0.28)}
+.vs-block{text-align:center}
+.vs-circle{width:42px;height:42px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--muted);margin:0 auto 8px}
+.vs-pot{font-size:11px;color:var(--muted);white-space:nowrap}
+.vs-pot b{color:var(--white);font-size:14px;display:block;margin-bottom:2px}
+.prog-wrap{margin-bottom:14px}
+.prog-bar{height:5px;background:var(--bg3);border-radius:99px;overflow:hidden;margin-bottom:7px;display:flex}
+.prog-a{height:100%;border-radius:99px 0 0 99px;background:var(--red-side);transition:width 1.2s ease}
+.prog-b{height:100%;border-radius:0 99px 99px 0;background:var(--blue-side);transition:width 1.2s ease}
+.prog-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
+.feat-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--border)}
+.feat-meta{display:flex;gap:18px}
+.meta-item{font-size:12px;color:var(--muted)}
+.meta-item span{color:var(--white);font-weight:500}
+.feat-share{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;transition:all 0.2s}
+.feat-share:hover{color:var(--white)}
+
+/* GRID */
+.beef-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.beef-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:20px;cursor:pointer;transition:all 0.22s}
+.beef-card:hover{border-color:rgba(60,110,113,0.35);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+.bc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.bc-cat{font-size:11px;font-weight:500;color:var(--muted)}
+.bc-pot{font-size:14px;font-weight:700}
+.bc-q{font-size:14px;font-weight:600;line-height:1.4;margin-bottom:14px}
+.bc-bar{height:5px;background:var(--bg3);border-radius:99px;overflow:hidden;margin-bottom:10px;display:flex}
+.bc-a{height:100%;border-radius:99px 0 0 99px;background:var(--red-side);transition:width 1s}
+.bc-b{height:100%;border-radius:0 99px 99px 0;background:var(--blue-side);transition:width 1s}
+.bc-players{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.bc-p{font-size:12px}
+.bc-p-name{color:var(--muted);margin-bottom:3px}
+.bc-p-pct{font-weight:700;font-size:16px}
+.bc-p.left .bc-p-pct{color:var(--red-side)}
+.bc-p.right{text-align:right}
+.bc-p.right .bc-p-pct{color:var(--blue-side)}
+.bc-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.bc-btn{border:none;border-radius:8px;padding:8px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.18s}
+.bc-btn.a{background:rgba(224,90,90,0.15);color:var(--red-side)}
+.bc-btn.a:hover{background:rgba(224,90,90,0.28)}
+.bc-btn.b{background:rgba(91,155,213,0.15);color:var(--blue-side)}
+.bc-btn.b:hover{background:rgba(91,155,213,0.28)}
+
+/* BET PANEL */
+.bet-panel{position:fixed;top:0;right:0;bottom:0;width:360px;background:var(--bg2);border-left:1px solid var(--border);z-index:500;padding:28px 24px;overflow-y:auto;transform:translateX(100%);transition:transform 0.3s cubic-bezier(.4,0,.2,1)}
+.bet-panel.open{transform:translateX(0)}
+.panel-close{position:absolute;top:20px;right:20px;width:30px;height:30px;border-radius:50%;background:var(--bg3);border:none;color:var(--muted);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.panel-close:hover{color:var(--white)}
+.panel-eyebrow{font-size:11px;font-weight:500;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.panel-q{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;line-height:1.35;margin-bottom:22px}
+.side-select{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:22px}
+.side-opt{border-radius:10px;padding:14px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all 0.2s}
+.side-opt.opt-a{background:rgba(224,90,90,0.08)}
+.side-opt.opt-a.chosen,.side-opt.opt-a:hover{border-color:var(--red-side);background:rgba(224,90,90,0.16)}
+.side-opt.opt-b{background:rgba(91,155,213,0.08)}
+.side-opt.opt-b.chosen,.side-opt.opt-b:hover{border-color:var(--blue-side);background:rgba(91,155,213,0.16)}
+.side-opt-name{font-size:12px;font-weight:600;margin-bottom:4px;color:var(--muted)}
+.side-opt-pct{font-size:24px;font-weight:700}
+.opt-a .side-opt-pct{color:var(--red-side)}
+.opt-b .side-opt-pct{color:var(--blue-side)}
+.side-opt-label{font-size:10px;color:var(--muted);margin-top:2px}
+.panel-section-title{font-size:11px;font-weight:500;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+.amount-presets{display:flex;gap:6px;margin-bottom:8px}
+.preset{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px;font-size:13px;font-weight:600;text-align:center;cursor:pointer;transition:all 0.18s;color:var(--white)}
+.preset:hover,.preset.on{background:var(--teal-dim);border-color:rgba(60,110,113,0.4);color:var(--teal-lt)}
+.amount-input-wrap{position:relative;margin-bottom:16px}
+.amount-input-wrap .dollar{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:18px;font-weight:600;color:var(--muted)}
+.amount-input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px 14px 14px 32px;font-size:22px;font-weight:700;color:var(--white);outline:none;transition:border-color 0.2s}
+.amount-input:focus{border-color:rgba(60,110,113,0.6)}
+.payout-preview{background:var(--bg3);border-radius:10px;padding:14px;margin-bottom:16px}
+.pp-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.pp-row:last-child{margin-bottom:0;padding-top:8px;border-top:1px solid var(--border)}
+.pp-key{font-size:12px;color:var(--muted)}
+.pp-val{font-size:12px;font-weight:600}
+.pp-row:last-child .pp-val{color:var(--green);font-size:14px}
+.signup-prompt{background:linear-gradient(135deg,rgba(60,110,113,0.12),rgba(60,110,113,0.04));border:1px solid rgba(60,110,113,0.25);border-radius:10px;padding:18px;text-align:center;margin-bottom:14px}
+.sp-title{font-size:14px;font-weight:700;margin-bottom:5px}
+.sp-sub{font-size:12px;color:var(--muted);margin-bottom:14px}
+.sp-email{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-size:13px;color:var(--white);outline:none;margin-bottom:8px;transition:border-color 0.2s}
+.sp-email:focus{border-color:rgba(60,110,113,0.5)}
+.sp-email::placeholder{color:var(--muted)}
+.sp-btn{width:100%;background:var(--teal);color:var(--white);border:none;border-radius:8px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s}
+.sp-btn:hover{background:var(--teal-lt)}
+.panel-note{font-size:11px;color:var(--muted);text-align:center}
+
+/* LEADERBOARD */
+.lb-section{max-width:1200px;margin:0 auto;padding:0 32px 80px}
+.section-label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.lb-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.lb-head{display:grid;grid-template-columns:48px 1fr 100px 80px 100px;padding:11px 20px;border-bottom:1px solid var(--border);font-size:11px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.lb-row{display:grid;grid-template-columns:48px 1fr 100px 80px 100px;padding:14px 20px;border-bottom:1px solid var(--border);align-items:center;cursor:pointer;transition:background 0.18s}
+.lb-row:last-child{border-bottom:none}
+.lb-row:hover{background:var(--bg3)}
+.lb-rank{font-size:14px;font-weight:700;color:var(--muted)}
+.lb-rank.g{color:#F5C842}.lb-rank.s{color:#A0AEC0}.lb-rank.b{color:#C07D3C}
+.lb-user{display:flex;align-items:center;gap:12px}
+.lb-avatar{width:32px;height:32px;border-radius:50%;background:var(--teal-dim);border:1px solid rgba(60,110,113,0.3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--teal-lt);flex-shrink:0}
+.lb-name{font-size:14px;font-weight:600}
+.lb-handle{font-size:11px;color:var(--muted)}
+.lb-val{font-size:14px;font-weight:600}
+.lb-val.earn{color:var(--green)}
+
+/* HOW IT WORKS */
+.how-section{max-width:1200px;margin:0 auto;padding:60px 32px 0}
+.section-header-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+.resolution-tag{background:var(--teal-dim);border:1px solid rgba(60,110,113,0.3);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:500;color:var(--teal-lt)}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.step-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:22px 18px;transition:all 0.2s}
+.step-card:hover{border-color:rgba(60,110,113,0.35);transform:translateY(-2px)}
+.step-num{font-size:11px;font-weight:600;color:var(--muted);margin-bottom:10px;font-variant-numeric:tabular-nums}
+.step-icon{font-size:24px;margin-bottom:10px}
+.step-title{font-size:14px;font-weight:700;margin-bottom:8px}
+.step-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.resolution-detail{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:0}
+.rd-title{font-size:13px;font-weight:600;margin-bottom:20px;color:var(--white)}
+.rd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rd-item{text-align:center}
+.rd-pct{font-size:32px;font-weight:800;margin-bottom:4px;font-family:'Plus Jakarta Sans',sans-serif}
+.rd-label{font-size:13px;font-weight:600;margin-bottom:6px}
+.rd-sub{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* TRUST */
+.trust-section{max-width:1200px;margin:0 auto;padding:48px 32px 0}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.trust-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:22px 18px;transition:all 0.2s}
+.trust-card:hover{border-color:rgba(60,110,113,0.35);transform:translateY(-2px)}
+.trust-icon{font-size:24px;margin-bottom:10px}
+.trust-title{font-size:14px;font-weight:700;margin-bottom:8px}
+.trust-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.trust-tag{display:inline-block;background:rgba(52,199,123,0.1);border:1px solid rgba(52,199,123,0.2);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;color:var(--green)}
+
+/* FAQ */
+.faq-section{max-width:1200px;margin:0 auto;padding:48px 32px 0}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.faq-item{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:22px;transition:all 0.2s;cursor:pointer}
+.faq-item:hover{border-color:rgba(60,110,113,0.35)}
+.faq-q{font-size:14px;font-weight:600;margin-bottom:10px;line-height:1.4}
+.faq-a{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* RESPONSIVE ADDITIONS */
+@media(max-width:900px){.steps-grid{grid-template-columns:1fr 1fr}.trust-grid{grid-template-columns:1fr 1fr}.faq-grid{grid-template-columns:1fr}.rd-grid{grid-template-columns:1fr}.how-section,.trust-section,.faq-section{padding-left:16px;padding-right:16px}}
+@media(max-width:600px){.steps-grid{grid-template-columns:1fr}.trust-grid{grid-template-columns:1fr}}
+
+/* OVERLAY + TOAST */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:400;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(2px)}
+.overlay.on{opacity:1;pointer-events:all}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--bg3);border:1px solid rgba(60,110,113,0.4);border-radius:10px;padding:12px 20px;font-size:13px;font-weight:500;color:var(--white);z-index:9000;opacity:0;transition:all 0.3s;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* ANIMATIONS */
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero-left{animation:fadeUp .5s .1s both}
+.hero-right-col{animation:fadeUp .5s .25s both}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.beef-grid{grid-template-columns:repeat(2,1fr)}.hero-top{grid-template-columns:1fr}.hero-right-col{display:none}}
+@media(max-width:700px){nav{padding:0 16px}.nav-tabs{display:none}.hero{padding:76px 16px 0}.hero-h1{font-size:36px}.feed-wrap,.lb-section{padding:0 16px 60px}.beef-grid{grid-template-columns:1fr}.arena{grid-template-columns:1fr}.vs-block{display:none}.bet-panel{width:100%;left:0;right:0;border-radius:20px 20px 0 0;border-left:none;border-top:1px solid var(--border);top:auto}.lb-head{grid-template-columns:40px 1fr 80px}.lb-row{grid-template-columns:40px 1fr 80px}.lb-val:nth-child(4),.lb-val:nth-child(3){display:none}.lb-head div:nth-child(4),.lb-head div:nth-child(3){display:none}}
+</style>
+</head>
+<body>
+
+<div class="overlay" id="overlay" onclick="closePanel()"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+    </div>
+    <span class="logo-text">beef<span>.gg</span></span>
+  </a>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="setTab(this)">All Beefs</button>
+    <button class="nav-tab" onclick="setTab(this)">🔴 Live</button>
+    <button class="nav-tab" onclick="setTab(this)">Trending</button>
+    <button class="nav-tab" onclick="setTab(this)">Resolved</button>
+  </div>
+  <div class="nav-right">
+    <div class="nav-pill"><span class="live-dot"></span> 47 live now</div>
+    <button class="nav-btn" onclick="openSignup()">Join Beta →</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top">
+    <div class="hero-left">
+      <div class="hero-tag"><span class="live-dot"></span> Beta live · 14,200+ on waitlist</div>
+      <h1 class="hero-h1">Debate it.<br><span class="t">Stake it.</span><br>Win it.</h1>
+      <p class="hero-sub">Two people argue. The crowd bets on who's right. Winner takes the pot. Pure conviction, real money.</p>
+      <div class="hero-actions">
+        <button class="btn-main" onclick="openSignup()">Start Beefing →</button>
+        <button class="btn-ghost" onclick="document.getElementById('feed').scrollIntoView({behavior:'smooth'})">Browse Beefs</button>
+      </div>
+    </div>
+    <div class="hero-right-col">
+      <div class="hero-stats">
+        <div class="h-stat"><div class="h-stat-val teal" id="c1">$0K</div><div class="h-stat-key">Paid out today</div></div>
+        <div class="h-stat"><div class="h-stat-val" id="c2">0</div><div class="h-stat-key">Active beefs</div></div>
+        <div class="h-stat"><div class="h-stat-val green" id="c3">0%</div><div class="h-stat-key">Avg payout boost</div></div>
+      </div>
+      <div class="hero-ticker">
+        <div class="ticker-inner">
+          <span class="t-item t-win">🏆 <b>@drip_king won $240</b> · "AI replaces engineers"</span>
+          <span class="t-item t-loss">💸 <b>@cryptobro lost $500</b> · "BTC hits $200K"</span>
+          <span class="t-item t-win">🏆 <b>@sarahvibe won $80</b> · "Pineapple pizza"</span>
+          <span class="t-item t-win">🏆 <b>@dotwave won $340</b> · "Kendrick > Drake"</span>
+          <span class="t-item t-loss">💸 <b>@sports_IQ lost $120</b> · "Jordan > LeBron"</span>
+          <span class="t-item t-win">🏆 <b>@techbabe won $660</b> · "Remote work"</span>
+          <span class="t-item t-win">🏆 <b>@drip_king won $240</b> · "AI replaces engineers"</span>
+          <span class="t-item t-loss">💸 <b>@cryptobro lost $500</b> · "BTC hits $200K"</span>
+          <span class="t-item t-win">🏆 <b>@sarahvibe won $80</b> · "Pineapple pizza"</span>
+          <span class="t-item t-win">🏆 <b>@dotwave won $340</b> · "Kendrick > Drake"</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEED -->
+<div class="feed-wrap" id="feed">
+  <div class="feed-header">
+    <div class="feed-title">Live Beefs</div>
+    <div class="feed-filters">
+      <div class="filter-chip on" onclick="filterTab(this)">All</div>
+      <div class="filter-chip" onclick="filterTab(this)">🤖 Tech</div>
+      <div class="filter-chip" onclick="filterTab(this)">🏀 Sports</div>
+      <div class="filter-chip" onclick="filterTab(this)">💰 Crypto</div>
+      <div class="filter-chip" onclick="filterTab(this)">🎵 Music</div>
+      <div class="filter-chip" onclick="filterTab(this)">💼 Work</div>
+    </div>
+  </div>
+
+  <!-- FEATURED -->
+  <div class="featured" onclick="openBet('AI will make 50% of software engineers unemployed by 2027','@drip_king','@facts_only',68,32,'$4,820')">
+    <div class="feat-top">
+      <span class="feat-cat">🤖 Tech · Featured Beef</span>
+      <div class="feat-badges"><span class="badge-live"><span class="live-dot"></span> Live</span><span class="badge-hot">🔥 Hot</span></div>
+    </div>
+    <div class="feat-q">"AI will make 50% of software engineers unemployed by 2027"</div>
+    <div class="arena">
+      <div class="debater side-a">
+        <div class="deb-name">drip_king</div>
+        <div class="deb-handle">@drip_king · 34W 12L</div>
+        <div class="deb-pct" id="fa">68%</div>
+        <div class="deb-amount" id="famt-a">$3,278 bet here</div>
+        <button class="deb-bet-btn" onclick="event.stopPropagation();openBet('AI will make 50% of software engineers unemployed by 2027','@drip_king','@facts_only',68,32,'$4,820','a')">Bet YES →</button>
+      </div>
+      <div class="vs-block">
+        <div class="vs-circle">VS</div>
+        <div class="vs-pot"><b id="fpot">$4,820</b>in pot</div>
+      </div>
+      <div class="debater side-b">
+        <div class="deb-name">facts_only</div>
+        <div class="deb-handle">@facts_only · 21W 8L</div>
+        <div class="deb-pct" id="fb">32%</div>
+        <div class="deb-amount" id="famt-b">$1,542 bet here</div>
+        <button class="deb-bet-btn" onclick="event.stopPropagation();openBet('AI will make 50% of software engineers unemployed by 2027','@drip_king','@facts_only',68,32,'$4,820','b')">Bet NO →</button>
+      </div>
+    </div>
+    <div class="prog-wrap">
+      <div class="prog-bar"><div class="prog-a" id="fbar-a" style="width:68%"></div><div class="prog-b" id="fbar-b" style="width:32%"></div></div>
+      <div class="prog-labels"><span id="fpl-a">YES — 68%</span><span id="fpl-b">NO — 32%</span></div>
+    </div>
+    <div class="feat-bottom">
+      <div class="feat-meta">
+        <div class="meta-item">👁 <span id="fviews">12,441</span> watching</div>
+        <div class="meta-item">⏱ <span>14 min left</span></div>
+        <div class="meta-item">🎯 <span>847 bettors</span></div>
+      </div>
+      <div class="feat-share" onclick="event.stopPropagation();showToast('🔗 Link copied!')">Share ↗</div>
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <div class="beef-grid">
+
+    <div class="beef-card" onclick="openBet('LeBron is the GOAT, not Jordan','@xomocha','@sports_IQ',41,59,'$880')">
+      <div class="bc-top"><span class="bc-cat">🏀 Sports</span><span class="bc-pot">$880</span></div>
+      <div class="bc-q">"LeBron is the GOAT. Jordan fanboys are stuck in the 90s."</div>
+      <div class="bc-bar"><div class="bc-a" style="width:41%"></div><div class="bc-b" style="width:59%"></div></div>
+      <div class="bc-players">
+        <div class="bc-p left"><div class="bc-p-name">@xomocha</div><div class="bc-p-pct">41%</div></div>
+        <div style="font-size:11px;color:var(--muted)">vs</div>
+        <div class="bc-p right"><div class="bc-p-name">@sports_IQ</div><div class="bc-p-pct">59%</div></div>
+      </div>
+      <div class="bc-actions">
+        <button class="bc-btn a" onclick="event.stopPropagation();openBet('LeBron is the GOAT, not Jordan','@xomocha','@sports_IQ',41,59,'$880','a')">Bet LeBron</button>
+        <button class="bc-btn b" onclick="event.stopPropagation();openBet('LeBron is the GOAT, not Jordan','@xomocha','@sports_IQ',41,59,'$880','b')">Bet Jordan</button>
+      </div>
+    </div>
+
+    <div class="beef-card" onclick="openBet('Bitcoin hits $200K before Dec 2026','@cryptobro','@hodlgang',73,27,'$4,500')">
+      <div class="bc-top"><span class="bc-cat">💰 Crypto</span><span class="bc-pot">$4,500</span></div>
+      <div class="bc-q">"Bitcoin hits $200,000 before December 2026. Easy money."</div>
+      <div class="bc-bar"><div class="bc-a" style="width:73%"></div><div class="bc-b" style="width:27%"></div></div>
+      <div class="bc-players">
+        <div class="bc-p left"><div class="bc-p-name">@cryptobro</div><div class="bc-p-pct">73%</div></div>
+        <div style="font-size:11px;color:var(--muted)">vs</div>
+        <div class="bc-p right"><div class="bc-p-name">@hodlgang</div><div class="bc-p-pct">27%</div></div>
+      </div>
+      <div class="bc-actions">
+        <button class="bc-btn a" onclick="event.stopPropagation();openBet('Bitcoin hits $200K before Dec 2026','@cryptobro','@hodlgang',73,27,'$4,500','a')">Bet YES</button>
+        <button class="bc-btn b" onclick="event.stopPropagation();openBet('Bitcoin hits $200K before Dec 2026','@cryptobro','@hodlgang',73,27,'$4,500','b')">Bet NO</button>
+      </div>
+    </div>
+
+    <div class="beef-card" onclick="openBet('Kendrick destroyed Drake in their beef','@dotwave','@drakestan',82,18,'$320')">
+      <div class="bc-top"><span class="bc-cat">🎵 Music</span><span class="bc-pot">$320</span></div>
+      <div class="bc-q">"Kendrick destroyed Drake and it's not even close. Not like us."</div>
+      <div class="bc-bar"><div class="bc-a" style="width:82%"></div><div class="bc-b" style="width:18%"></div></div>
+      <div class="bc-players">
+        <div class="bc-p left"><div class="bc-p-name">@dotwave</div><div class="bc-p-pct">82%</div></div>
+        <div style="font-size:11px;color:var(--muted)">vs</div>
+        <div class="bc-p right"><div class="bc-p-name">@drakestan</div><div class="bc-p-pct">18%</div></div>
+      </div>
+      <div class="bc-actions">
+        <button class="bc-btn a" onclick="event.stopPropagation();openBet('Kendrick destroyed Drake in their beef','@dotwave','@drakestan',82,18,'$320','a')">Bet Kendrick</button>
+        <button class="bc-btn b" onclick="event.stopPropagation();openBet('Kendrick destroyed Drake in their beef','@dotwave','@drakestan',82,18,'$320','b')">Bet Drake</button>
+      </div>
+    </div>
+
+    <div class="beef-card" onclick="openBet('Remote workers are more productive than office workers','@techbabe','@boomervibes',55,45,'$660')">
+      <div class="bc-top"><span class="bc-cat">💼 Work</span><span class="bc-pot">$660</span></div>
+      <div class="bc-q">"Remote workers are objectively more productive. Office culture is dead."</div>
+      <div class="bc-bar"><div class="bc-a" style="width:55%"></div><div class="bc-b" style="width:45%"></div></div>
+      <div class="bc-players">
+        <div class="bc-p left"><div class="bc-p-name">@techbabe</div><div class="bc-p-pct">55%</div></div>
+        <div style="font-size:11px;color:var(--muted)">vs</div>
+        <div class="bc-p right"><div class="bc-p-name">@boomervibes</div><div class="bc-p-pct">45%</div></div>
+      </div>
+      <div class="bc-actions">
+        <button class="bc-btn a" onclick="event.stopPropagation();openBet('Remote workers are more productive than office workers','@techbabe','@boomervibes',55,45,'$660','a')">Bet Remote</button>
+        <button class="bc-btn b" onclick="event.stopPropagation();openBet('Remote workers are more productive than office workers','@techbabe','@boomervibes',55,45,'$660','b')">Bet Office</button>
+      </div>
+    </div>
+
+    <div class="beef-card" onclick="openBet('Pineapple belongs on pizza','@sarahvibe','@bigbrainz',61,39,'$95')">
+      <div class="bc-top"><span class="bc-cat">🍕 Food</span><span class="bc-pot">$95</span></div>
+      <div class="bc-q">"Pineapple on pizza is elite tier and the haters are simply wrong."</div>
+      <div class="bc-bar"><div class="bc-a" style="width:61%"></div><div class="bc-b" style="width:39%"></div></div>
+      <div class="bc-players">
+        <div class="bc-p left"><div class="bc-p-name">@sarahvibe</div><div class="bc-p-pct">61%</div></div>
+        <div style="font-size:11px;color:var(--muted)">vs</div>
+        <div class="bc-p right"><div class="bc-p-name">@bigbrainz</div><div class="bc-p-pct">39%</div></div>
+      </div>
+      <div class="bc-actions">
+        <button class="bc-btn a" onclick="event.stopPropagation();openBet('Pineapple belongs on pizza','@sarahvibe','@bigbrainz',61,39,'$95','a')">Bet YES 🍍</button>
+        <button class="bc-btn b" onclick="event.stopPropagation();openBet('Pineapple belongs on pizza','@sarahvibe','@bigbrainz',61,39,'$95','b')">Bet NO 🚫</button>
+      </div>
+    </div>
+
+    <div class="beef-card" onclick="openBet('Taylor Swift is the greatest artist of the 21st century','@swiftie4ever','@musiccritic',47,53,'$210')">
+      <div class="bc-top"><span class="bc-cat">🎵 Music</span><span class="bc-pot">$210</span></div>
+      <div class="bc-q">"Taylor Swift is the greatest artist of the 21st century, no debate."</div>
+      <div class="bc-bar"><div class="bc-a" style="width:47%"></div><div class="bc-b" style="width:53%"></div></div>
+      <div class="bc-players">
+        <div class="bc-p left"><div class="bc-p-name">@swiftie4ever</div><div class="bc-p-pct">47%</div></div>
+        <div style="font-size:11px;color:var(--muted)">vs</div>
+        <div class="bc-p right"><div class="bc-p-name">@musiccritic</div><div class="bc-p-pct">53%</div></div>
+      </div>
+      <div class="bc-actions">
+        <button class="bc-btn a" onclick="event.stopPropagation();openBet('Taylor Swift is the greatest artist of the 21st century','@swiftie4ever','@musiccritic',47,53,'$210','a')">Bet YES</button>
+        <button class="bc-btn b" onclick="event.stopPropagation();openBet('Taylor Swift is the greatest artist of the 21st century','@swiftie4ever','@musiccritic',47,53,'$210','b')">Bet NO</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-section">
+  <div class="section-header-row">
+    <div class="section-label">How it works</div>
+    <div class="resolution-tag">Community + Judges + Appeals</div>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-icon">🥊</div>
+      <div class="step-title">Issue a Beef</div>
+      <div class="step-desc">Challenge someone on any topic. Set your stake ($1–$500). Both parties must accept and deposit funds before the debate starts. No debate = full refund.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-icon">🎙️</div>
+      <div class="step-title">Argue Your Case</div>
+      <div class="step-desc">Each debater gets 3 minutes to argue. Text, video, or both. The crowd watches live and places bets in real-time as odds shift.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-icon">⚖️</div>
+      <div class="step-title">Multi-Layer Resolution</div>
+      <div class="step-desc">Winner is determined by: 60% community vote + 40% certified judge panel. For beefs over $200, a human moderator reviews the outcome before funds are released.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <div class="step-icon">💸</div>
+      <div class="step-title">Get Paid</div>
+      <div class="step-desc">Winner takes 95% of pot. Correct bettors share their side's pool proportionally. Instant withdrawal once verified. BEEF.gg takes 5%.</div>
+    </div>
+  </div>
+  <div class="resolution-detail">
+    <div class="rd-title">How the winner is decided — transparently</div>
+    <div class="rd-grid">
+      <div class="rd-item">
+        <div class="rd-pct" style="color:var(--teal-lt)">60%</div>
+        <div class="rd-label">Community vote</div>
+        <div class="rd-sub">Wallet-verified accounts only. 1 vote per user. Weighted by account age.</div>
+      </div>
+      <div class="rd-item">
+        <div class="rd-pct" style="color:var(--green)">40%</div>
+        <div class="rd-label">Certified judges</div>
+        <div class="rd-sub">Panel of 3 trained moderators scores argument quality independently.</div>
+      </div>
+      <div class="rd-item">
+        <div class="rd-pct" style="color:var(--gold)">72h</div>
+        <div class="rd-label">Appeals window</div>
+        <div class="rd-sub">Either party can contest. Senior moderator reviews within 72 hours. Funds held in escrow.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST & SAFETY -->
+<div class="trust-section">
+  <div class="section-label">Trust & Safety</div>
+  <div class="trust-grid">
+    <div class="trust-card">
+      <div class="trust-icon">🪪</div>
+      <div class="trust-title">Identity Verification (KYC)</div>
+      <div class="trust-desc">All users must verify identity before depositing or withdrawing. Government ID + selfie required. Powered by Stripe Identity.</div>
+      <div class="trust-tag">Required for $10+</div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">🔒</div>
+      <div class="trust-title">New Account Limits</div>
+      <div class="trust-desc">New accounts start with a $25 max bet. Limits increase progressively over 30 days as you build history. Prevents coordinated shill attacks.</div>
+      <div class="trust-tag">Warming period: 30 days</div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">🤖</div>
+      <div class="trust-title">Anomaly Detection</div>
+      <div class="trust-desc">ML model monitors for coordinated betting patterns, sockpuppet accounts, and suspicious vote clusters. Flagged beefs are frozen pending review.</div>
+      <div class="trust-tag">Real-time monitoring</div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">🏦</div>
+      <div class="trust-title">Funds in Escrow</div>
+      <div class="trust-desc">All staked funds are held in a regulated escrow account until the beef is resolved. No BEEF.gg employee can access user funds.</div>
+      <div class="trust-tag">FDIC-insured partner bank</div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="section-label">Common questions</div>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-q">What stops people from voting for their friend even if they lost?</div>
+      <div class="faq-a">Votes from accounts created within 7 days of the beef, or accounts with suspicious activity, are automatically excluded. The 40% judge component also provides an independent counterweight to crowd bias.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if the result is genuinely ambiguous?</div>
+      <div class="faq-a">If the vote is within 52/48 margin, the beef is automatically escalated to senior judges. They can declare a draw — both debaters get their stake back, bettors are fully refunded.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is this legal in the US?</div>
+      <div class="faq-a">BEEF.gg operates as a skill-based competition platform, not gambling. Winners are determined by argument quality and community judgment — not chance. We're operating in a similar legal framework to DraftKings and FanDuel.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What's the minimum bet to participate?</div>
+      <div class="faq-a">Debaters must stake a minimum of $1 to start a beef. Audience bettors can bet as little as $0.50. No maximum on bets, but large bets ($500+) require enhanced KYC verification.</div>
+    </div>
+  </div>
+</div>
+
+<!-- LEADERBOARD -->
+<div class="lb-section">
+  <div class="section-label">Top Beefers This Week</div>
+  <div class="lb-wrap">
+    <div class="lb-head"><div>#</div><div>Player</div><div>Win Rate</div><div>Beefs</div><div>Earned</div></div>
+    <div class="lb-row"><div class="lb-rank g">1</div><div class="lb-user"><div class="lb-avatar">D</div><div><div class="lb-name">drip_king</div><div class="lb-handle">@drip_king</div></div></div><div class="lb-val">82%</div><div class="lb-val">34</div><div class="lb-val earn">+$4,820</div></div>
+    <div class="lb-row"><div class="lb-rank s">2</div><div class="lb-user"><div class="lb-avatar">T</div><div><div class="lb-name">techbabe</div><div class="lb-handle">@techbabe</div></div></div><div class="lb-val">75%</div><div class="lb-val">28</div><div class="lb-val earn">+$3,200</div></div>
+    <div class="lb-row"><div class="lb-rank b">3</div><div class="lb-user"><div class="lb-avatar">W</div><div><div class="lb-name">dotwave</div><div class="lb-handle">@dotwave</div></div></div><div class="lb-val">79%</div><div class="lb-val">19</div><div class="lb-val earn">+$2,780</div></div>
+    <div class="lb-row"><div class="lb-rank">4</div><div class="lb-user"><div class="lb-avatar">X</div><div><div class="lb-name">xomocha</div><div class="lb-handle">@xomocha</div></div></div><div class="lb-val">61%</div><div class="lb-val">41</div><div class="lb-val earn">+$1,990</div></div>
+    <div class="lb-row"><div class="lb-rank">5</div><div class="lb-user"><div class="lb-avatar">S</div><div><div class="lb-name">sarahvibe</div><div class="lb-handle">@sarahvibe</div></div></div><div class="lb-val">68%</div><div class="lb-val">22</div><div class="lb-val earn">+$1,450</div></div>
+  </div>
+</div>
+
+<!-- BET PANEL -->
+<div class="bet-panel" id="betPanel">
+  <button class="panel-close" onclick="closePanel()">✕</button>
+  <div class="panel-eyebrow">Place your bet</div>
+  <div class="panel-q" id="pq">—</div>
+  <div class="side-select">
+    <div class="side-opt opt-a chosen" id="opt-a" onclick="chooseSide('a')">
+      <div class="side-opt-name" id="pna">—</div>
+      <div class="side-opt-pct" id="ppa">—</div>
+      <div class="side-opt-label">YES / Agree</div>
+    </div>
+    <div class="side-opt opt-b" id="opt-b" onclick="chooseSide('b')">
+      <div class="side-opt-name" id="pnb">—</div>
+      <div class="side-opt-pct" id="ppb">—</div>
+      <div class="side-opt-label">NO / Disagree</div>
+    </div>
+  </div>
+  <div class="panel-section-title">Amount</div>
+  <div class="amount-presets">
+    <div class="preset" onclick="setP(this,5)">$5</div>
+    <div class="preset on" onclick="setP(this,20)">$20</div>
+    <div class="preset" onclick="setP(this,50)">$50</div>
+    <div class="preset" onclick="setP(this,100)">$100</div>
+  </div>
+  <div class="amount-input-wrap">
+    <span class="dollar">$</span>
+    <input class="amount-input" type="number" id="amt" value="20" min="1" oninput="updPayout()">
+  </div>
+  <div class="payout-preview">
+    <div class="pp-row"><span class="pp-key">Your bet</span><span class="pp-val" id="pp-bet">$20.00</span></div>
+    <div class="pp-row"><span class="pp-key">Platform fee (5%)</span><span class="pp-val" id="pp-fee">$1.00</span></div>
+    <div class="pp-row"><span class="pp-key">Odds</span><span class="pp-val" id="pp-odds">1.47×</span></div>
+    <div class="pp-row"><span class="pp-key">If you win</span><span class="pp-val" id="pp-win">+$27.40</span></div>
+  </div>
+  <div class="signup-prompt" id="sp">
+    <div class="sp-title">Join to place your bet</div>
+    <div class="sp-sub">Free to join · Instant access</div>
+    <input class="sp-email" id="sp-email" type="email" placeholder="your@email.com">
+    <button class="sp-btn" onclick="submitJoin()">Secure spot + place bet →</button>
+  </div>
+  <div class="panel-note">18+ only · Skill-based · Instant withdrawals</div>
+</div>
+
+<div class="toast" id="toast">✓ <span id="tmsg">Done</span></div>
+
+<script>
+let side='a', curA=68;
+
+// Counters
+function counter(el,to,prefix,suffix,dur){let s=0,step=to/(dur/16);const t=setInterval(()=>{s=Math.min(s+step,to);el.textContent=prefix+Math.floor(s)+suffix;if(s>=to)clearInterval(t)},16)}
+window.addEventListener('load',()=>{setTimeout(()=>{counter(document.getElementById('c1'),847,'$','K',1800);counter(document.getElementById('c2'),47,'','',1500);counter(document.getElementById('c3'),320,'','+%',2000)},400)});
+
+// Tabs
+function setTab(el){document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));el.classList.add('active')}
+function filterTab(el){document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('on'));el.classList.add('on')}
+
+// Live fluctuation
+setInterval(()=>{
+  const d=(Math.random()-.5)*2.5;
+  curA=Math.min(Math.max(curA+d,30),70);
+  const a=Math.round(curA),b=100-a;
+  document.getElementById('fa').textContent=a+'%';
+  document.getElementById('fb').textContent=b+'%';
+  document.getElementById('fbar-a').style.width=a+'%';
+  document.getElementById('fbar-b').style.width=b+'%';
+  document.getElementById('fpl-a').textContent='YES — '+a+'%';
+  document.getElementById('fpl-b').textContent='NO — '+b+'%';
+  const v=parseInt(document.getElementById('fviews').textContent.replace(/,/g,''));
+  document.getElementById('fviews').textContent=(v+Math.floor(Math.random()*30-8)).toLocaleString();
+  document.querySelectorAll('.bc-a').forEach(el=>{
+    const c=parseFloat(el.style.width);
+    const nv=Math.min(Math.max(c+(Math.random()-.5)*2.5,20),80);
+    el.style.width=nv+'%';
+    const sib=el.nextElementSibling;
+    if(sib)sib.style.width=(100-nv)+'%';
+    const card=el.closest('.beef-card');
+    if(card){
+      const ps=card.querySelectorAll('.bc-p-pct');
+      if(ps[0])ps[0].textContent=Math.round(nv)+'%';
+      if(ps[1])ps[1].textContent=Math.round(100-nv)+'%';
+    }
+  });
+},2800);
+
+// Panel
+function openBet(q,na,nb,pa,pb,pot,s){
+  document.getElementById('pq').textContent='"'+q+'"';
+  document.getElementById('pna').textContent=na;
+  document.getElementById('ppa').textContent=pa+'%';
+  document.getElementById('pnb').textContent=nb;
+  document.getElementById('ppb').textContent=pb+'%';
+  side=s||'a';
+  document.getElementById('opt-a').classList.toggle('chosen',side==='a');
+  document.getElementById('opt-b').classList.toggle('chosen',side==='b');
+  updPayout();
+  document.getElementById('betPanel').classList.add('open');
+  document.getElementById('overlay').classList.add('on');
+}
+function closePanel(){document.getElementById('betPanel').classList.remove('open');document.getElementById('overlay').classList.remove('on')}
+function chooseSide(s){side=s;document.getElementById('opt-a').classList.toggle('chosen',s==='a');document.getElementById('opt-b').classList.toggle('chosen',s==='b');updPayout()}
+function setP(el,v){document.querySelectorAll('.preset').forEach(p=>p.classList.remove('on'));el.classList.add('on');document.getElementById('amt').value=v;updPayout()}
+function updPayout(){
+  const amt=parseFloat(document.getElementById('amt').value)||0;
+  const pct=parseFloat(side==='a'?document.getElementById('ppa').textContent:document.getElementById('ppb').textContent)||50;
+  const odds=Math.max(100/pct,1.05);
+  const fee=amt*0.05;
+  const win=(amt-fee)*odds;
+  document.getElementById('pp-bet').textContent='$'+amt.toFixed(2);
+  document.getElementById('pp-fee').textContent='$'+fee.toFixed(2);
+  document.getElementById('pp-odds').textContent=odds.toFixed(2)+'×';
+  document.getElementById('pp-win').textContent='+$'+win.toFixed(2);
+}
+
+function openSignup(){openBet('Join BEEF.gg and start winning','You','Them',60,40,'$∞')}
+
+function submitJoin(){
+  const e=document.getElementById('sp-email').value;
+  if(!e||!e.includes('@')){document.getElementById('sp-email').style.borderColor='rgba(224,90,90,0.6)';return}
+  document.getElementById('sp').innerHTML='<div style="text-align:center;padding:10px 0"><div style="font-size:28px;margin-bottom:8px">🥊</div><div style="font-weight:700;color:var(--teal-lt);margin-bottom:4px">You\'re in!</div><div style="font-size:12px;color:var(--muted)">We\'ll hit you when beta drops.</div></div>';
+  showToast('🔥 You\'re on the list!');
+  setTimeout(closePanel,2000);
+}
+
+function showToast(msg){document.getElementById('tmsg').textContent=msg;const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}}),{threshold:0.08});
+document.querySelectorAll('.beef-card,.lb-row,.step-card,.trust-card,.faq-item,.rd-item').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(14px)';el.style.transition='opacity 0.4s ease,transform 0.4s ease';obs.observe(el)});
+
+updPayout();
+</script>
+</body>
+</html>
